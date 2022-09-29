@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="index.html" class="nav-link logo">TechShop</a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a href="ejemplo7.html" class="nav-link nav-menu-link">&LeftTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a href="ejemplo2.html" class="nav-link nav-menu-link">&RightTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a href="audios.html" class="nav-link nav-menu-link">Audios</a></li>
+                    <li class="nav-menu-item"><a href="videos.html" class="nav-link nav-menu-link">Videos</a></li>
+                    <li class="nav-menu-item"><a href="iframe.html" class="nav-link nav-menu-link">iFrame</a></li>
+                    <li class="nav-menu-item"><a href="formulario.html" class="nav-link nav-menu-link">Form</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h2>Ejemplo de form</h2>
+            
+            <h3>Información de Registro</h3>
+            
+            <form action="registro.jsp" method="POST">
+                <input type="hidden" name="idCliente" value="123456789" />
+                <label>Nombre completo:</label>
+                <input type="text" name="nombre" placeholder="Apellido 1 Apellido 2 Nombre" /><br />
+                
+                <label>Correo:</label>
+                <input type="email" name="correo" placeholder="juan@gmail.com" /><br />
+                
+                <label>Comida preferida:</label>
+                Coreana: <input type="checkbox" name="coreana" />
+                Española: <input type="checkbox" name="espanola" />
+                Italiana: <input type="checkbox" name="italiana" /><br />
+                
+                <label>Fecha de cita:</label>
+                <input type="date" name="cita" /><br />
+                
+                <label>Hora de cita:</label>
+                <input type="time" name="cita" /><br />
+                
+                <label>Foto:</label>
+                <input type="file" name="foto" /><br />
+                
+                <label>Edad</label>
+                <input type="number" name="edad" min="18" max="35" /><br />
+                
+                <label>Color preferido:</label>
+                Azul <input type="radio" name="color" value="azul" />
+                Rojo <input type="radio" name="color" value="rojo" />
+                Verde <input type="radio" name="color" value="verde" /><br />
+                
+                <label>Clave de ingreso:</label>
+                <input type="password" name="clave" /><br />
+                
+                <br />
+                
+                <input type="submit" name="Enviar" value="Registrar" />
+            </form>
+        </section>
+    </body>
+</html>
