@@ -55,4 +55,14 @@ public class ClienteServiceImpl implements ClienteService {
     public void delete (Cliente cliente){
         clienteDao.delete(cliente);
     }
+    
+    @Override
+    public Cliente getClientesPorApellido (String apellidos){
+        return clienteDao.findByApellidos(apellidos);
+    }
+    
+    /*@Override
+    public List<Cliente> getClientesPorCorreo (String correo){
+        return clienteDao.findByCorreo(correo);
+    }*/
 }

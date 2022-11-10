@@ -18,6 +18,7 @@ public class ClienteController {
     @GetMapping("/cliente/listado")
     public String inicio(Model model){
         var clientes = clienteService.getClientes();
+        //var clientes = clienteService.getClientesPorApellido("Mena Loría");
         
         model.addAttribute("clientes", clientes);
         
@@ -31,7 +32,7 @@ public class ClienteController {
     }
     
     @PostMapping("/cliente/guardar")
-    public String guardaroCliente(Cliente cliente){
+    public String guardarCliente(Cliente cliente){
         clienteService.save(cliente);
         return "redirect:/cliente/listado";
     }
@@ -47,5 +48,18 @@ public class ClienteController {
     public String eliminarCliente(Cliente cliente){
         clienteService.delete(cliente);
         return "redirect:/cliente/listado";
+    }
+    
+    @GetMapping("/cliente/buscar")
+    public String buscarCliente(Cliente cliente){
+        
+        return "/cliente/busqueda";
+    }
+    
+    @PostMapping("/cliente/encontrarCliente")
+    public String encontrarCliente(Cliente cliente,  Model model){
+        cliente = clienteService.getClientesPorApellido(cliente.getApellidos());
+        model.addAttribute("cliente", cliente);
+        return "/cliente/modificar";
     }
 }
