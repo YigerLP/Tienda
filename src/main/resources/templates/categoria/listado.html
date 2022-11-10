@@ -8,32 +8,32 @@
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        <h2>Listado de categorias</h2>
-        <a th:href="@{/categoria/nuevo}">Nuevo Categoria</a>
-        <div th:if="${categorias != null and !categorias.empty}">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Descripcion</th>
-                        <th>Activo</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="categoria : ${categorias}">
-                        <td>[[${categoria.descripcion}]]</td>
-                        <td>[[${categoria.activo}]]</td>
-                        <td><a th:href="@{/eliminarCategoria/} + ${categoria.idCategoria}">Eliminar</a></td>
-                        <td><a th:href="@{/modificarCategoria/} + ${categoria.idCategoria}">Modificar</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div th:if="${categorias == null or categorias.empty}">
-            No se tienen categorias que mostrar!
+        <div class="contenido">
+            <h2>Listado de categorias</h2>
+            <a th:href="@{/categoria/nuevo}">Nuevo Categoria</a>
+            <div th:if="${categorias != null and !categorias.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Activo</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="categoria : ${categorias}">
+                            <td>[[${categoria.descripcion}]]</td>
+                            <td>[[${categoria.activo}]]</td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
+                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${categorias == null or categorias.empty}">
+                No se tienen categorias que mostrar!
+            </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
     </body>

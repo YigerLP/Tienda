@@ -5,26 +5,33 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
+            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        <h1>Datos de Cliente</h1>
-        <a th:href="@{/}">Regresar</a>
+        <h1>Datos de Artículo</h1>
+        <a th:href="@{/articulo/listado}">Regresar</a>
         <hr />
         
-        <form th:action="@{/cliente/guardar}" method="post" th:object="${cliente}">
-            <input type="hidden" name="idCliente" th:field="*{idCliente}" />
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" th:field="*{nombre}" />
+        <form th:action="@{/articulo/guardar}" method="post" th:object="${articulo}">
+            <input type="hidden" name="idArticulo" th:field="*{idArticulo}" />
+            <label for="categoria">Categoría</label>
+            <input type="text" name="categoria" th:field="*{idCategoria}" />
             <br />
-            <label for="apellidos">Apellidos</label>
-            <input type="text" name="apellidos" th:field="*{apellidos}" />
+            <label for="descripcion">Descripción</label>
+            <input type="text" name="descripcion" th:field="*{descripcion}" />
             <br />
-            <label for="correo">Correo</label>
-            <input type="email" name="correo" th:field="*{correo}" />
+            <label for="detalle">Detalle</label>
+            <input type="text" name="detalle" th:field="*{detalle}" />
             <br />
-            <label for="telefono">Telefono</label>
-            <input type="tel" name="telefono" th:field="*{telefono}" />
+            <label for="precio">Precio</label>
+            <input type="number" name="precio" th:field="*{precio}" />
+            <br />
+            <label for="existencias">Existencias</label>
+            <input type="number" name="existencias" th:field="*{existencias}" />
+            <br />
+            <label for="activo">Activo</label>
+            <input type="text" name="activo" th:field="*{activo}" />
             <br />
             <input type="submit" name="guardar" value="Guardar" />
         </form>
