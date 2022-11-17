@@ -1,27 +1,25 @@
 <!doctype html>
 <html
+    xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        <div class="contenido">
-            <h2>Listado de articulos</h2>
-            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
+        <div class="container">
+            <h2>[[#{articulo.titulo}]]</h2>
+            <a th:href="@{/articulo/nuevo}">[[#{articulo.nuevo}]]</a>
             <div th:if="${articulos != null and !articulos.empty}">
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Descripcion</th>
-                            <th>Detalle</th>
-                            <th>Precio</th>
-                            <th>Existencias</th>
-                            <th>Activo</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
+                            <th>[[#{articulo.descripcion}]]</th>
+                            <th>[[#{articulo.detalle}]]</th>
+                            <th>[[#{articulo.precio}]]</th>
+                            <th>[[#{articulo.existencias}]]</th>
+                            <th>[[#{articulo.activo}]]</th>
+                            <th>[[#{accion.eliminar}]]</th>
+                            <th>[[#{accion.actualizar}]]</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,14 +29,14 @@
                             <td>[[${#numbers.formatDecimal(articulo.precio, 3, 2)}]]</td>
                             <td>[[${#numbers.formatDecimal(articulo.existencias, 1, 0)}]]</td>
                             <td>[[${articulo.activo}]]</td>
-                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
-                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
+                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">[[#{accion.eliminar}]]</a></td>
+                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">[[#{accion.actualizar}]]</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div th:if="${articulos == null or articulos.empty}">
-                No se tienen articulos que mostrar!
+                <h2>[[#{articulo.no_mostrar}]]</h2>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

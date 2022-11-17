@@ -1,40 +1,39 @@
 <!doctype html>
 <html
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8">
-            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        <h1>Datos de Artículo</h1>
-        <a th:href="@{/articulo/listado}">Regresar</a>
-        <hr />
-        
-        <form th:action="@{/articulo/guardar}" method="post" th:object="${articulo}">
-            <input type="hidden" name="idArticulo" th:field="*{idArticulo}" />
-            <label for="categoria">Categoría</label>
-            <input type="text" name="categoria" th:field="*{idCategoria}" />
-            <br />
-            <label for="descripcion">Descripción</label>
-            <input type="text" name="descripcion" th:field="*{descripcion}" />
-            <br />
-            <label for="detalle">Detalle</label>
-            <input type="text" name="detalle" th:field="*{detalle}" />
-            <br />
-            <label for="precio">Precio</label>
-            <input type="number" name="precio" th:field="*{precio}" />
-            <br />
-            <label for="existencias">Existencias</label>
-            <input type="number" name="existencias" th:field="*{existencias}" />
-            <br />
-            <label for="activo">Activo</label>
-            <input type="text" name="activo" th:field="*{activo}" />
-            <br />
-            <input type="submit" name="guardar" value="Guardar" />
-        </form>
+        <div class="container">
+            <h1>[[#{articulo.datos}]]</h1>
+            <a th:href="@{/articulo/listado}">[[#{accion.regresar}]]</a>
+            <hr />
+
+            <form th:action="@{/articulo/guardar}" method="post" th:object="${articulo}">
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}" />
+                <label for="categoria">[[#{articulo.categoria}]]</label>
+                <input type="text" name="categoria" th:field="*{idCategoria}" />
+                <br />
+                <label for="descripcion">[[#{articulo.descripcion}]]</label>
+                <input type="text" name="descripcion" th:field="*{descripcion}" />
+                <br />
+                <label for="detalle">[[#{articulo.detalle}]]</label>
+                <input type="text" name="detalle" th:field="*{detalle}" />
+                <br />
+                <label for="precio">[[#{articulo.precio}]]</label>
+                <input type="number" name="precio" th:field="*{precio}" />
+                <br />
+                <label for="existencias">[[#{articulo.existencias}]]</label>
+                <input type="number" name="existencias" th:field="*{existencias}" />
+                <br />
+                <label for="activo">[[#{articulo.activo}]]</label>
+                <input type="text" name="activo" th:field="*{activo}" />
+                <hr />
+                <button type="submit" th:text="#{accion.guardar}" />
+            </form>
+        </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>
