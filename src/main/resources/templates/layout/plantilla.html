@@ -16,41 +16,56 @@
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                 <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
-                    <button class="navbar-toggler" data-toggler="collapse" data-target="#navbarCollapse">
+                    <a th:href="@{/}" class="navbar-brand">TechShop</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
                             <li class="nav-item px-2">
-                                <a th:href="@{/cliente/listado}" class="nav-link nav-menu-link">[[#{plantilla.clientes}]]</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}"
+                                   th:text="#{plantilla.clientes}">Clientes</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a th:href="@{/articulo/listado}" class="nav-link nav-menu-link">[[#{plantilla.articulos}]]</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}"
+                                   th:text="#{plantilla.categorias}">Categorias</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a th:href="@{/categoria/listado}" class="nav-link nav-menu-link">[[#{plantilla.categorias}]]</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}"
+                                   th:text="#{plantilla.articulos}">Articulos</a>
+                            </li>
+                            <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a class="nav-menu-link nav-link" th:href="@{/usuario/listado}"
+                                   th:text="#{plantilla.usuarios}">Usuarios</a>
                             </li>
                         </ul>
-                        <ul class="navbar-nav ml-auto">
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
                             <li class="nav-item mr-3">
                                 <a href="#" class="nav-link">
                                     <i class="fas fa-user"></i>
-                                    [[#{plantilla.bienvenido}]]
-                                    <span sec:authentication="name"></span>
+                                    <span th:text="#{plantilla.bienvenido}">Bievenido:</span>
+                                    <span sec:authentication="name">Usuario</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <form method="post" th:action="@{/logout}">
-                                    <a href="#" class="nav-link" onclick="this.parentNode.submit();">
-                                        <i class="fas fa-user-times"></i>
-                                        [[#{plantilla.logout}]]
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
                                     </a>
                                 </form>
                             </li>
                         </ul>
-                    </div>
-                </div>
+                        <ul sec:authorize="!isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/login}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-door-open"></i> [[#{login.login}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>                    
+                </div>|
             </nav>
             <section id="main-header" class="py-2 bg-success text-white">
                 <div class="container">
